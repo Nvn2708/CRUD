@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Rajee Pyla",
+      "designation": "Software developer",
+      "email": "prajee@ariqt.com"
+    },
+    {
+      "id": 2,
+      "name": "Anil kumar Otte",
+      "designation": "QA Engineer 1",
+      "email": "oanil@ariqt.com"
+    },
+    {
+      "id": 3,
+      "name": "Shravan Kumar",
+      "designation": "Dot net developer",
+      "email": "bshravan@ariqt.com"
+    },
+    {
+      "id": 4,
+      "name": "Archan guar",
+      "designation": "Product owner",
+      "email": "garchan@ariqt.com"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

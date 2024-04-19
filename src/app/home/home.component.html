@@ -1,0 +1,70 @@
+<button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="createDetails()" class="btn btn-primary w-100">Add New Employee</button>
+<br>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Designation</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Here I used @for because of this project build on Angular 17  -->
+    <!-- ngFor or @for used for iterate/looping the list/array (employeesList) -->
+    <!-- which means everytime employee holds a single object of the employeesList array untill the end of the list -->
+    @for(employee of employeesList;track employee.id){
+    <tr>
+      <!-- if you want to only single field of the object you can use employee.id or employee.name like this -->
+      <!-- Or you can accessible enitire object/details by using employee -->
+
+      <td>{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.designation}}</td>
+      <td>{{employee.email}}</td>
+      <td>
+        <!-- For example here on Edit I am accessing entire object details so click on edit and check console -->
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="editEmployeeDetails(employee)">Edit</button>&nbsp;
+        <!-- For example here you can get only one field of the employee/object by using employee.id or employee.name you can test by changing on  -->
+        <button class="btn btn-danger" (click)="removeEmployeeDetails(employee.id)">Remove</button>
+      </td>
+
+      <!-- And also here we are using (clcik) events/methods  -->
+      <!-- These methods of unique names so each and every method performs different action -->
+      <!-- here for edit and remove button we are using click methods and calling editEmployeeDetails(employee) and removeEmployeeDetails(employee.id) -->
+      <!-- in those function names we can pass some key or keys -->
+      <!-- Simplye we are sending the some details from html to ts so that in that function we can use that data and manipulate -->
+    </tr>
+    }
+  </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Deatils</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Here I am usng reactive form for simply and reusable -->
+        <!-- As to create new employee details or edit exsiting employee details we want use input fields -->
+        <!-- And in a formGroup we can create a object or group that holds all the fields that we want so we can use -->
+
+        <form [formGroup]="employeeDetailsForm">
+          <input class="form-control" placeholder="Name" type="text" formControlName="name"><br>
+          <input class="form-control" placeholder="Designation" type="text" formControlName="designation"><br>
+          <input class="form-control" placeholder="E-mail" type="text" formControlName="email">
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveChanges()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
